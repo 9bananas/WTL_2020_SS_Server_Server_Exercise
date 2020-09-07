@@ -1,0 +1,14 @@
+{
+  "name": "bse18_ss2020_wtl_scharl_suppan_schweighofer",
+  "version": "0.0.0",
+  "description": "bse18_ss2020_wtl_scharl_suppan_schweighofer",
+  "scripts": {
+    "start": "node server"
+  },
+  "engines": {
+    "node": "~6.10.x"
+  },
+  "author": {
+    "name": ""
+  }
+}
