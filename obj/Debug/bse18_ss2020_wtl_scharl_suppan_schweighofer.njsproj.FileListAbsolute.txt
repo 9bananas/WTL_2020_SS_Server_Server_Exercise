@@ -1,3 +1,6 @@
 C:\Users\stefa\Desktop\BSE\SS2020\WTL\Abschlussaufgabe\bse18_ss2020_wtl_scharl_suppan_schweighofer\obj\Debug\bse18_ss2020_wtl_scharl_suppan_schweighofer.njsprojAssemblyReference.cache
 C:\Users\stefa\Desktop\BSE\SS2020\WTL\Abschlussaufgabe\bse18_ss2020_wtl_scharl_suppan_schweighofer\obj\Debug\bse18_ss2020_wtl_scharl_suppan_schweighofer.njsproj.CoreCompileInputs.cache
 C:\Users\stefa\Desktop\BSE\SS2020\WTL\Abschlussaufgabe\bse18_ss2020_wtl_scharl_suppan_schweighofer\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\simon\Source\Repos\WTL_2020_SS_Server_Server_Exercise\obj\Debug\bse18_ss2020_wtl_scharl_suppan_schweighofer.njsprojAssemblyReference.cache
+C:\Users\simon\Source\Repos\WTL_2020_SS_Server_Server_Exercise\obj\Debug\bse18_ss2020_wtl_scharl_suppan_schweighofer.njsproj.CoreCompileInputs.cache
+C:\Users\simon\Source\Repos\WTL_2020_SS_Server_Server_Exercise\bin\Microsoft.NodejsTools.WebRole.dll
