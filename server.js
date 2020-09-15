@@ -5,7 +5,7 @@ var url = require('url');
 var fs = require('fs');
 var list_generator = require('./list_generator');
 
-//checks for a file called "user_list.json", generate if not found
+//checks for files defined in data_lists, generates all of the lists if not found
 var list_file_path = './data_lists/';
 var data_lists = ['user_list','admin_list'];
 
@@ -13,12 +13,12 @@ try {
     list_generator.check_lists(list_file_path, data_lists);
 }
 catch (err) {
-    console.log('Error in list generator call!');
+    console.log('Error in list_generator call!');
     console.error(err);
 }
 
+//initializes the web server
 console.log('trying to initiate server ...');
-
 try {
     http.createServer(function (req, res) {
         fs.readFile('test_file.html', function (err, data) {

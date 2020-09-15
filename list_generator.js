@@ -7,10 +7,8 @@ module.exports = {
             var path = list_file_path + list + '.json';
             //checks the existence of lists
             if (fs.existsSync(path) == false) {
-                fs.writeFile(path, '', function (err) {
-                    if (err) throw err;
-                    console.log('generated ' + list + '!');
-                });
+                fs.writeFileSync(path);
+                console.log('generated ' + list + '!');
             }
             else if (fs.existsSync(path) == true) {
                 console.log('found ' + list + '!');
