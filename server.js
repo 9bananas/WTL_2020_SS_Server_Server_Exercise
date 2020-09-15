@@ -3,48 +3,33 @@ var http = require('http');
 var port = process.env.PORT || 1337;
 var url = require('url');
 var fs = require('fs');
+var list_generator = require('./list_generator');
 
-//test for pull request
-
-//checks for a file called "user_list.json", set a boolean according to wether it found it or not
-var user_list_file_path = './user_list.json';
-var user_list_existence_check = new Boolean(false);
+//checks for a file called "user_list.json", generate if not found
+var list_file_path = './data_lists/';
+var data_lists = ['user_list','admin_list'];
 
 try {
-    user_list_existence_check = false;
-    if (fs.existsSync(user_list_file_path = true)) {
-        user_list_existence_check = true;
-        console.log('user_list.json ... found!');
-    }
-    if (fs.existsSync(user_list_file_path = false)) {
-        user_list_existence_check = false;
-        user_list_generator();
-        console.log('user_list.json missing ... generating');
-    }
-    
+    list_generator.check_lists(list_file_path, data_lists);
 }
 catch (err) {
+    console.log('Error in list generator call!');
     console.error(err);
-    
 }
 
-//generates a file called user_list.json: this guarantees, that the server always has the right file ready
-function user_list_generator(user_list_existence_check) {
-    if (user_list_existence_check = false) {
-        fs.open('user_list.json', 'w', function (err, file) {
-            if (err) throw err;
-            console.log('user_list successfully created!');
-        })
-    }
-    else {
-        console.log("no user_list generated ... error?")
-    }
-};
+console.log('trying to initiate server ...');
 
-http.createServer(function (req, res) {
-    fs.readFile('test_file.html', function (err, data) {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write(data);
-        return res.end();
-    });
-}).listen(1337);
+try {
+    http.createServer(function (req, res) {
+        fs.readFile('test_file.html', function (err, data) {
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.write(data);
+            return res.end();
+        });
+    }).listen(1337);
+    console.log('... initialization finished!');
+}
+catch (err) {
+    console.log('... initialization error!');
+    console.error(err);
+}
