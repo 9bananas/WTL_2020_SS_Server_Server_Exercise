@@ -1,59 +1,28 @@
-// JavaScript source code
-function generate_list() {
-    //var file = "names.json";
-    //var rawFile = new XMLHttpRequest();
-    //rawFile.overrideMimeType("application/json");
-    //rawFile.open("GET", file, true);
-    //rawFile.onreadystatechange = function () {
-    //    if (rawFile.readyState === 4 && rawFile.status == "200") {
-    //        callback(rawFile.responseText);
-    //        console.log(rawFile.responseText)
-    //    }
-    //}
-    //rawFile.send(null);
+async function generate_list() {
 
-    //jQuery.getJSON("names.json", function (data) {
-    //    console.log(data);
-    //});
-
-//    var json = (funcion(){
-//        var json = null;
-//    $.ajax({
-//        'async': false,
-//        'global': false,
-//        'url': "names.json",
-//        'dataType': "json",
-//        'success': function (data) {
-//            json = data;
-//        }
-//    });
-//    console.
-    //log(json);
-//}) ();
-
-    //var json = require('./names.json');
-    //console.log(json);
+    $.getJSON('http://localhost:1337/', function (data) {
+        console.log(data);
+        let tbl = document.createElement("table");
+        tbl.id = "names";
+        let div = document.getElementById("names_list");
+        data.forEach(d => {
+            let row = document.createElement("tr");
+            row.appendChild(document.createElement("td")).appendChild(document.createTextNode(d.id));
+            row.appendChild(document.createElement("td")).appendChild(document.createTextNode(d.name));
+            row.appendChild(document.createElement("td")).appendChild(document.createTextNode(d.datum));
+            tbl.appendChild(row);
+            div.appendChild(tbl);
+        });
+    });
+}
 
 
-
-    //$.ajax({
-    //    url: "ma,es.html",
-    //    context: document.body
-    //}).done(function () {
-    //    console.log("lala");
-    //});
-
-    //$.ajaxSetup({
-    //    crossOrigin: true
-    //});
-    //$.getJSON("./names.json", function (json) {
-    //    dataType: json;
-    //    console.log(json); // this will show the info it in firebug console
-    //});
-
-    fetch('./names.json')
-        .then(results => results.json())
-        .then(console.log);
-
+async function submit() { //hier muss der eingetragene Name übergeben werden
+    $.getJSON('http://localhost:1337/submit', function (data) {
+        let tbl = document.getElementById("names");
+        tbl.parentNode.removeChild(tbl);
+        alert("You have been added: " + data.name + ", your ID is: " + data.id);
+        generate_list() 
+    });
 }
 

@@ -5,10 +5,12 @@
     <meta charset="utf-8" />
     <title>Gästebuch</title>
     <script src="./script1.js"></script>
-    <script src="./names.json"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!--<script src="./names.json"></script>-->
 </head>
 <body>
     <script> generate_list() </script>
+    <!--<script> generate_list() </script>-->
     <div id="checkin_data">
         <table>
             <tr>
@@ -17,7 +19,7 @@
             </tr>
         </table>
 
-        <button type="submit" id="submit_button">Check in!</button>
+        <button type="submit" id="submit_button" onclick=submit()>Check in!</button>
     </div>
     <div id="names_list">
 

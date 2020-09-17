@@ -4,6 +4,8 @@ var port = process.env.PORT || 1337;
 var url = require('url');
 var fs = require('fs');
 var list_generator = require('./list_generator');
+var script = require('./script1.js');
+
 
 //checks for a file called "user_list.json", generate if not found
 var list_file_path = './data_lists/';
@@ -21,8 +23,12 @@ console.log('trying to initiate server ...');
 
 try {
     http.createServer(function (req, res) {
-        fs.readFile('test_file.html', function (err, data) {
-            res.writeHead(200, { 'Content-Type': 'text/html' });
+        fs.readFile('names.json', function (err, data) {
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader('Access-Control-Request-Method', '*');
+            res.setHeader('Access-Control-Allow-Methods', '*');
+            res.setHeader('Access-Control-Allow-Headers', 'authorization, content-type');
+            res.writeHead(200, { 'Content-Type': 'json' });
             res.write(data);
             return res.end();
         });
@@ -33,3 +39,7 @@ catch (err) {
     console.log('... initialization error!');
     console.error(err);
 }
+
+const express = require('express')
+const app = express()
+
