@@ -1,4 +1,6 @@
 'use strict';
+
+//loading of requirements
 var http = require('http');
 var port = process.env.PORT || 1337;
 var url = require('url');
@@ -6,11 +8,11 @@ var fs = require('fs');
 var list_generator = require('./list_generator');
 var script = require('./script1.js');
 
-
-//checks for a file called "user_list.json", generate if not found
+//configuration variables
 var list_file_path = './data_lists/';
 var data_lists = ['user_list','admin_list'];
 
+//checks for all files defined in 'data_lists', generates any files not found as empty files
 try {
     list_generator.check_lists(list_file_path, data_lists);
 }
@@ -19,8 +21,10 @@ catch (err) {
     console.error(err);
 }
 
+//debugging messge
 console.log('trying to initiate server ...');
 
+//initializes the server
 try {
     http.createServer(function (req, res) {
         fs.readFile('names.json', function (err, data) {
@@ -40,6 +44,7 @@ catch (err) {
     console.error(err);
 }
 
+// ----- !!! NEEDS DOCUMENTATION !!! -----
 const express = require('express')
 const app = express()
 
