@@ -1,7 +1,7 @@
-async function generate_list() {
+function generate_list() {
 
     $.getJSON('http://localhost:1337/', function (data) {
-        console.log(data);
+        //console.log(data);
         let tbl = document.createElement("table");
         tbl.id = "names";
         let div = document.getElementById("names_list");
@@ -16,13 +16,21 @@ async function generate_list() {
     });
 }
 
-
-async function submit() { //hier muss der eingetragene Name übergeben werden
-    $.getJSON('http://localhost:1337/submit', function (data) {
+function submit() { //hier muss der eingetragene Name übergeben werden
+    //$.getJSON('http://localhost:1337/submit', function (data) {
+    //    let name = document.getElementById("name_input").value;
+    //    let tbl = document.getElementById("names");
+    //    tbl.parentNode.removeChild(tbl);
+    //    alert("You have been added: " + data.name + ", your ID is: " + data.id);
+    //    generate_list() 
+    //});
+    let name = document.getElementById("name_input").value;
+    $.post('http://localhost:1337/submit', name, function (data) {
         let tbl = document.getElementById("names");
         tbl.parentNode.removeChild(tbl);
         alert("You have been added: " + data.name + ", your ID is: " + data.id);
-        generate_list() 
+        generate_list();
+        console.log(data);
     });
 }
 

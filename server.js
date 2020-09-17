@@ -43,3 +43,6 @@ catch (err) {
 const express = require('express')
 const app = express()
 
+app.post('/submit', function (req, res) {
+    res.send('[{"datum": "2020-04-23T18:25:43.511Z","id": 1,"name": "' + req + '"}]');
+});
