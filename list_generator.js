@@ -20,10 +20,5 @@ module.exports = {
                 console.log('found ' + list + '!');
             }
         }
-    },
-    //test function, please ignore
-    test_check_lists: function () {
-        var user_list_existence_check = fs.existsSync(user_list_file_path);
-        console.log(user_list_existence_check);
     }
 }
