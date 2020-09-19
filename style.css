@@ -13,7 +13,7 @@
 
 .picture {
     height: 380px;
-    background-image: url("Gruppe.jpg");
+    background-image: url("Land1.jpg");
     background-position: top;
     background-size: cover;
     opacity: 1.5;
@@ -23,26 +23,29 @@
 
 
 body {
-    background: linear-gradient(70deg, #0040FF, #B40486);
+    background: linear-gradient(70deg, #FFFFFF, #0462F0);
     margin: 25px;
     border: 3px solid orange;
-    
 }
 
 table {
     background: #FFFFFF;
     height: 120px;
-    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
     width: 370px;
     padding: 10px;
     opacity: 0.8;
+    border-radius: 10px;
 }
 
 
 button {
     width: 370px;
-    margin: 20px;
-    background: #FF0000;
+    background: #0622F6;
+    margin-left: 739px;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
-
-
