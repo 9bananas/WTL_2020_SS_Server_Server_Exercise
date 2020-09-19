@@ -36,7 +36,7 @@ try {
             res.write(data);
             return res.end();
         });
-    }).listen(1337);
+    }).listen(port);
     console.log('... initialization finished!');
 }
 catch (err) {
