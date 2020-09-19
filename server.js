@@ -55,3 +55,76 @@ app.post('/submit', function (req, res) {
     res.send('[{"datum": "2020-04-23T18:25:43.511Z","id": 1,"name": "' + req + '"}]');
     console.log(req);
 });
+
+
+
+//JSON into array
+var fs = require('fs');
+//var file_path = './data_lists/user_list.json';
+var file_path = './names.json';
+
+//function read_list() {
+//    try {
+//        last_list = JSON.parse(fs.readFileSync(file_path, 'utf8'));
+//        //console.log(last_list.name);
+//        return last_list;
+//    }
+//    catch (err) {
+//        console.log(err);
+//        console.log('Error in script1: file not found!')
+//    }
+//}
+
+////number of outputs
+//var number_of_output = 10;
+////exact type of output (name, id, datum)
+//var type_of_output = 'id';
+
+//function last_x_users(number_of_output, type_of_output) {
+//    var last_list = read_list();
+//    for (var i = 0; i < number_of_output - 1; i++) {
+//        console.log(last_list[i].id);
+//    }
+//}
+
+//last_x_users(number_of_output, type_of_output);
+
+
+function submit() {
+    let name = document.getElementById("name_input").value;
+    $.post('http://localhost:1337/submit', name, function (data) {
+        let tbl = document.getElementById("names");
+        tbl.parentNode.removeChild(tbl);
+        alert("You have been added: " + data.name + ", your ID is: " + data.id);
+        generate_list();
+        console.log(data);
+    });
+}
+
+//neuer Record in names.js
+function submitbackend(name) {
+    var fs = require('fs');
+    var today = new Date();
+    var datum = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + "T" + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "Z";
+    var data = JSON.parse(fs.readFileSync('names.json', 'utf8'));
+    var id = 0;
+    var bool = false;
+    //ich wollte schauen welche id noch frei ist, hat nicht funktioniert, jetzt hat mal alles id = 0
+    //for (id = 0; id < 10000; id++) {
+    //    bool = false;
+    //    for (var j = 0; j < Object.keys(data).length; j++) {
+    //        if (id == data[j].id) {
+    //            bool = true;
+    //            j++;
+    //            break;
+    //        }
+    //    }
+    //    if (!bool) break;
+    //}
+    data.push({ datum: datum, id: id, name: name, });
+    var json = JSON.stringify(data);
+    fs.writeFileSync('names.json', json);
+    //return (data[Object.keys(data).length]);
+}
+
+submitbackend("Mario");

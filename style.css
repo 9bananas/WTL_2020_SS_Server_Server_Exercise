@@ -44,8 +44,13 @@ table {
 button {
     width: 370px;
     background: #0622F6;
-    margin-left: 739px;
-    margin-right: auto;
+    margin: auto;
     margin-top: 10px;
     margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#checkin_data {
+    text-align: center;
 }
