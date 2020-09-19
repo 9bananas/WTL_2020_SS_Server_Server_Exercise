@@ -1,3 +1,4 @@
+
 function generate_list() {
 
     $.getJSON('http://localhost:1337/', function (data) {
@@ -31,3 +32,39 @@ function submit() {
     });
 }
 
+
+
+/*
+//JSON into array
+var fs = require('fs');
+//var file_path = './data_lists/user_list.json';
+var file_path = './names.json';
+
+function read_list() {
+    try {
+        last_list = JSON.parse(fs.readFileSync(file_path, 'utf8'));
+        //console.log(last_list.name);
+        return last_list;
+    }
+    catch (err) {
+        console.log(err);
+        console.log('Error in script1: file not found!')
+    }
+}
+
+//number of outputs
+var number_of_output = 10;
+//exact type of output (name, id, datum)
+var type_of_output = 'id';
+
+function last_x_users(number_of_output, type_of_output) {
+    var last_list = read_list();
+    console.log(last_list.name);
+    for (var i = 0; i < number_of_output; i++) {
+        //console.log(last_list);
+        
+    }
+}
+
+last_x_users(number_of_output, type_of_output);
+*/
