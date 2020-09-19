@@ -7,10 +7,12 @@ var url = require('url');
 var fs = require('fs');
 var list_generator = require('./list_generator');
 var script = require('./script1.js');
+//var config = require('./config.js').global_port;
+//console.log(global_port);
 
 //configuration variables
 var list_file_path = './data_lists/';
-var data_lists = ['user_list','admin_list'];
+var data_lists = ['user_list', 'admin_list'];
 
 //checks for all files defined in 'data_lists', generates any files not found as empty files
 try {
@@ -36,7 +38,8 @@ try {
             res.write(data);
             return res.end();
         });
-    }).listen(port);
+
+    }).listen(1337);
     console.log('... initialization finished!');
 }
 catch (err) {
@@ -44,10 +47,11 @@ catch (err) {
     console.error(err);
 }
 
-// ----- !!! NEEDS DOCUMENTATION !!! -----
+/* ----- !!! NEEDS DOCUMENTATION !!! ----- */
 const express = require('express')
 const app = express()
 
 app.post('/submit', function (req, res) {
     res.send('[{"datum": "2020-04-23T18:25:43.511Z","id": 1,"name": "' + req + '"}]');
+    console.log(req);
 });
