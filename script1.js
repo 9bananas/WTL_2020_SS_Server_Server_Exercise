@@ -9,21 +9,18 @@ function generate_list() {
             let row = document.createElement("tr");
             row.appendChild(document.createElement("td")).appendChild(document.createTextNode(d.id));
             row.appendChild(document.createElement("td")).appendChild(document.createTextNode(d.name));
-            row.appendChild(document.createElement("td")).appendChild(document.createTextNode(d.datum));
+            var date = d.datum;
+            var parts = date.slice(0, -5).split('T');
+            var dateC = parts[0];
+            var timeC = parts[1];
+            row.appendChild(document.createElement("td")).appendChild(document.createTextNode(dateC + ' ' + timeC));
             tbl.appendChild(row);
             div.appendChild(tbl);
         });
     });
 }
 
-function submit() { //hier muss der eingetragene Name übergeben werden
-    //$.getJSON('http://localhost:1337/submit', function (data) {
-    //    let name = document.getElementById("name_input").value;
-    //    let tbl = document.getElementById("names");
-    //    tbl.parentNode.removeChild(tbl);
-    //    alert("You have been added: " + data.name + ", your ID is: " + data.id);
-    //    generate_list() 
-    //});
+function submit() {
     let name = document.getElementById("name_input").value;
     $.post('http://localhost:1337/submit', name, function (data) {
         let tbl = document.getElementById("names");
