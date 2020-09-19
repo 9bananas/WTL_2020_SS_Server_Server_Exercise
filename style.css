@@ -1,0 +1,48 @@
+
+
+
+
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+.picture {
+    height: 380px;
+    background-image: url("Gruppe.jpg");
+    background-position: top;
+    background-size: cover;
+    opacity: 1.5;
+}
+
+
+
+
+body {
+    background: linear-gradient(70deg, #0040FF, #B40486);
+    margin: 25px;
+    border: 3px solid orange;
+    
+}
+
+table {
+    background: #FFFFFF;
+    height: 120px;
+    margin: 20px;
+    width: 370px;
+    padding: 10px;
+    opacity: 0.8;
+}
+
+
+button {
+    width: 370px;
+    margin: 20px;
+    background: #FF0000;
+}
+
+
