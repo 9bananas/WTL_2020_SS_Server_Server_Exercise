@@ -1,25 +1,52 @@
 ﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+
 <head>
     <meta charset="utf-8" />
     <title>Gästebuch</title>
     <script src="./script1.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <!--<script src="./names.json"></script>-->
+    <link rel="stylesheet" href="style.css">
+
+
 </head>
+
+
+        
+
+
+
 <body>
-    <script> generate_list() </script>
+
+
+
+    <script>generate_list()</script>
     <!--<script> generate_list() </script>-->
+
+    <div class="picture">
+    </div>
+
+
+
+
     <div id="checkin_data">
+
         <table>
+
+
             <tr>
                 <td>Vorname:</td>
-                <td><input type="text" id="name_input"/></td>
+                <td><input type="text" id="name_input" /></td>
+
             </tr>
+
         </table>
 
         <button type="submit" id="submit_button" onclick=submit()>Check in!</button>
+
     </div>
     <div id="names_list">
 
