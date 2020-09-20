@@ -26,84 +26,56 @@ catch (err) {
 //debugging messge
 console.log('trying to initiate server ...');
 
-//initializes the server
-try {
-    http.createServer(function (req, res) {
-        fs.readFile('names.json', function (err, data) {
-            res.setHeader('Access-Control-Allow-Origin', '*');
-            res.setHeader('Access-Control-Request-Method', '*');
-            res.setHeader('Access-Control-Allow-Methods', '*');
-            res.setHeader('Access-Control-Allow-Headers', 'authorization, content-type');
-            res.writeHead(200, { 'Content-Type': 'json' });
-            res.write(data);
-            return res.end();
-        });
 
-    }).listen(1337);
-    console.log('... initialization finished!');
-}
-catch (err) {
-    console.log('... initialization error!');
-    console.error(err);
-}
-
-/* ----- !!! NEEDS DOCUMENTATION !!! ----- */
-const express = require('express')
-const app = express()
-
-app.post('/submit', function (req, res) {
-    res.send('[{"datum": "2020-04-23T18:25:43.511Z","id": 1,"name": "' + req + '"}]');
-    console.log(req);
-});
-
-
-
-//JSON into array
-var fs = require('fs');
-//var file_path = './data_lists/user_list.json';
-var file_path = './names.json';
-
-//function read_list() {
-//    try {
-//        last_list = JSON.parse(fs.readFileSync(file_path, 'utf8'));
-//        //console.log(last_list.name);
-//        return last_list;
-//    }
-//    catch (err) {
-//        console.log(err);
-//        console.log('Error in script1: file not found!')
-//    }
-//}
-
-////number of outputs
-//var number_of_output = 10;
-////exact type of output (name, id, datum)
-//var type_of_output = 'id';
-
-//function last_x_users(number_of_output, type_of_output) {
-//    var last_list = read_list();
-//    for (var i = 0; i < number_of_output - 1; i++) {
-//        console.log(last_list[i].id);
-//    }
-//}
-
-//last_x_users(number_of_output, type_of_output);
-
-
-
-
-//neuer Record in names.js
-function submitbackend(name) {
+////neuer Record in names.js
+function newName(name) {
     var fs = require('fs');
     var today = new Date();
     var datum = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + "T" + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "." + today.getMilliseconds() + "Z";
     var data = JSON.parse(fs.readFileSync('names.json', 'utf8'));
-    var id = Object.keys(data).length + 1;
+    var id = Object.keys(data).length;
     var bool = false;
     data.push({ datum: datum, id: id, name: name, });
     var json = JSON.stringify(data);
     fs.writeFileSync('names.json', json);
+
     //return (data[Object.keys(data).length]);
 }
 
-submitbackend("Mario");
+
+const express = require('express');
+var fs = require('fs');
+// create new express app and save it as "app"
+const app = express();
+
+// server configuration
+const PORT = 1337;
+
+// create a route for the app
+app.get('/', (req, res) => {
+        res.send('Ich bin der nette Server mit 2 Funtionen :)');
+});
+
+app.post('/submit', (req, res) => {
+    //var irg = newName(req.body);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Request-Method', '*');
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'authorization, content-type');
+    res.send("hallo!" + req);
+    newName(req.body);
+});
+    // make the server listen to requests
+    app.listen(1337, () => {
+        console.log('Server running at: http://localhost:1337/');
+    });
+
+
+app.get('/getnames', (req, res) => {
+    var data = JSON.parse(fs.readFileSync('names.json', 'utf8'));
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Request-Method', '*');
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'authorization, content-type');
+    res.send(data);
+});

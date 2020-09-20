@@ -1,13 +1,12 @@
-
+var serverurl = "http://localhost:1337/";
 function generate_list() {
 
-    $.getJSON('http://localhost:1337/', function (data) {
-        //console.log(data);
+    $.getJSON(serverurl + "getnames", function (data) {
         let tbl = document.createElement("table");
         tbl.id = "names";
         let div = document.getElementById("names_list");
         //for (var i = 0; i < 9; i++) {
-        for (var i = Object.keys(data).length - 1; i > Object.keys(data).length - 10; i--) {
+        for (var i = Object.keys(data).length - 1; i >= Object.keys(data).length - 10; i--) {
             let row = document.createElement("tr");
             row.appendChild(document.createElement("td")).appendChild(document.createTextNode(data[i].id));
             row.appendChild(document.createElement("td")).appendChild(document.createTextNode(data[i].name));
@@ -23,12 +22,16 @@ function generate_list() {
 }
 
 
+
 function submit() {
     let name = document.getElementById("name_input").value;
-    $.post('http://localhost:1337/submit', name, function (data) {
+    let json = "{name:haha, id:5}"
+    var name2 = "yes";
+    $.post(serverurl + 'submit', name2, function (data) {
         let tbl = document.getElementById("names");
         tbl.parentNode.removeChild(tbl);
-        alert("You have been added: " + data.name + ", your ID is: " + data.id);
+        alert("You have been added: " + data);
+        //alert("You have been added: " + data.name + ", your ID is: " + data.id);
         generate_list();
         console.log(data);
     });
