@@ -96,22 +96,10 @@ var file_path = './names.json';
 function submitbackend(name) {
     var fs = require('fs');
     var today = new Date();
-    var datum = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + "T" + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "Z";
+    var datum = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + "T" + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "." + today.getMilliseconds() + "Z";
     var data = JSON.parse(fs.readFileSync('names.json', 'utf8'));
-    var id = 0;
+    var id = Object.keys(data).length + 1;
     var bool = false;
-    //ich wollte schauen welche id noch frei ist, hat nicht funktioniert, jetzt hat mal alles id = 0
-    //for (id = 0; id < 10000; id++) {
-    //    bool = false;
-    //    for (var j = 0; j < Object.keys(data).length; j++) {
-    //        if (id == data[j].id) {
-    //            bool = true;
-    //            j++;
-    //            break;
-    //        }
-    //    }
-    //    if (!bool) break;
-    //}
     data.push({ datum: datum, id: id, name: name, });
     var json = JSON.stringify(data);
     fs.writeFileSync('names.json', json);
