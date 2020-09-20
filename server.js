@@ -33,20 +33,20 @@ function newName(name) {
     var today = new Date();
     var datum = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + "T" + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "." + today.getMilliseconds() + "Z";
     var data = JSON.parse(fs.readFileSync('names.json', 'utf8'));
-    var id = Object.keys(data).length;
-    var bool = false;
+    var id = data[Object.keys(data).length - 1].id + 1;
     data.push({ datum: datum, id: id, name: name, });
     var json = JSON.stringify(data);
     fs.writeFileSync('names.json', json);
-
-    //return (data[Object.keys(data).length]);
+    return ({ datum: datum, id: id, name: name, });
 }
 
 
 const express = require('express');
+var bodyParser = require('body-parser');
 var fs = require('fs');
 // create new express app and save it as "app"
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // server configuration
 const PORT = 1337;
@@ -57,13 +57,11 @@ app.get('/', (req, res) => {
 });
 
 app.post('/submit', (req, res) => {
-    //var irg = newName(req.body);
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Request-Method', '*');
     res.setHeader('Access-Control-Allow-Methods', '*');
     res.setHeader('Access-Control-Allow-Headers', 'authorization, content-type');
-    res.send("hallo!" + req);
-    newName(req.body);
+    res.send(newName(req.body['name']));
 });
     // make the server listen to requests
     app.listen(1337, () => {
