@@ -14,7 +14,9 @@ function generate_list() {
                 var parts = date.slice(0, -5).split('T');
                 var dateC = parts[0];
                 var timeC = parts[1];
-                row.appendChild(document.createElement("td")).appendChild(document.createTextNode(dateC + ' ' + timeC));
+                var datetime = document.createElement("td");
+                row.appendChild(datetime).appendChild(document.createTextNode(dateC + ' ' + timeC));
+                datetime.className = "date";
                 tbl.appendChild(row);
                 div.appendChild(tbl);
             }
@@ -27,7 +29,9 @@ function generate_list() {
                 var parts = date.slice(0, -5).split('T');
                 var dateC = parts[0];
                 var timeC = parts[1];
-                row.appendChild(document.createElement("td")).appendChild(document.createTextNode(dateC + ' ' + timeC));
+                var datetime = document.createElement("td");
+                row.appendChild(datetime).appendChild(document.createTextNode(dateC + ' ' + timeC));
+                datetime.className = "date";
                 tbl.appendChild(row);
                 div.appendChild(tbl);
             }

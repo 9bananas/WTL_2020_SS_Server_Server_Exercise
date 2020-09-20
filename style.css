@@ -53,6 +53,14 @@ body {
     border-radius: 10px;
 }
 
+table td.date {
+    text-align: right;
+}
+
+table {
+    width: 350px;
+}
+
 #creators {
     background: #FFFFFF;
     height: 120px;
