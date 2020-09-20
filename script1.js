@@ -21,3 +21,15 @@ function generate_list() {
         }
     });
 }
+
+
+function submit() {
+    let name = document.getElementById("name_input").value;
+    $.post('http://localhost:1337/submit', name, function (data) {
+        let tbl = document.getElementById("names");
+        tbl.parentNode.removeChild(tbl);
+        alert("You have been added: " + data.name + ", your ID is: " + data.id);
+        generate_list();
+        console.log(data);
+    });
+}
