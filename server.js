@@ -59,7 +59,6 @@ app.post('/submit', function (req, res) {
 
 
 //JSON into array
-var fs = require('fs');
 //var file_path = './data_lists/user_list.json';
 var file_path = './names.json';
 
@@ -94,9 +93,8 @@ var file_path = './names.json';
 
 //neuer Record in names.js
 function submitbackend(name) {
-    var fs = require('fs');
     var today = new Date();
-    var datum = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + "T" + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "." + today.getMilliseconds() + "Z";
+    var datum = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + " T" + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "." + today.getMilliseconds();
     var data = JSON.parse(fs.readFileSync('names.json', 'utf8'));
     var id = Object.keys(data).length + 1;
     var bool = false;
@@ -107,3 +105,4 @@ function submitbackend(name) {
 }
 
 submitbackend("Mario");
+console.log(JSON.parse(fs.readFileSync('names.json', 'utf8')));
