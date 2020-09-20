@@ -11,8 +11,8 @@ var script = require('./script1.js');
 //console.log(global_port);
 
 //configuration variables
-var list_file_path = './data_lists/';
-var data_lists = ['user_list', 'admin_list'];
+var list_file_path = './';
+var data_lists = ['names'];
 
 //checks for all files defined in 'data_lists', generates any files not found as empty files
 try {
@@ -25,20 +25,6 @@ catch (err) {
 
 //debugging messge
 console.log('trying to initiate server ...');
-
-
-////neuer Record in names.js
-function newName(name) {
-    var fs = require('fs');
-    var today = new Date();
-    var datum = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + "T" + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "." + today.getMilliseconds() + "Z";
-    var data = JSON.parse(fs.readFileSync('names.json', 'utf8'));
-    var id = data[Object.keys(data).length - 1].id + 1;
-    data.push({ datum: datum, id: id, name: name, });
-    var json = JSON.stringify(data);
-    fs.writeFileSync('names.json', json);
-    return ({ datum: datum, id: id, name: name, });
-}
 
 
 const express = require('express');
@@ -70,10 +56,28 @@ app.post('/submit', (req, res) => {
 
 
 app.get('/getnames', (req, res) => {
-    var data = JSON.parse(fs.readFileSync('names.json', 'utf8'));
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Request-Method', '*');
-    res.setHeader('Access-Control-Allow-Methods', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'authorization, content-type');
-    res.send(data);
+    try {
+        var data = JSON.parse(fs.readFileSync('names.json', 'utf8'));
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Request-Method', '*');
+        res.setHeader('Access-Control-Allow-Methods', '*');
+        res.setHeader('Access-Control-Allow-Headers', 'authorization, content-type');
+        res.send(data);
+    } catch {
+        res.send("[{}]");
+    }
 });
+
+
+////neuer Record in names.js
+function newName(name) {
+    var fs = require('fs');
+    var today = new Date();
+    var datum = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + "T" + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "." + today.getMilliseconds() + "Z";
+    var data = JSON.parse(fs.readFileSync('names.json', 'utf8'));
+    var id = data[Object.keys(data).length - 1].id + 1;
+    data.push({ datum: datum, id: id, name: name, });
+    var json = JSON.stringify(data);
+    fs.writeFileSync('names.json', json);
+    return ({ datum: datum, id: id, name: name, });
+}

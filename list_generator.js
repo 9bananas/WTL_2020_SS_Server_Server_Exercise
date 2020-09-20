@@ -12,6 +12,7 @@ module.exports = {
                 //generates a missing list
                 fs.writeFile(path, '', function (err) {
                     if (err) throw err;
+                    fs.writeFileSync('names.json', '[{ "datum": "", "id": 0, "name": "" }]');
                     console.log('generated ' + list + '!');
                 });
             }
