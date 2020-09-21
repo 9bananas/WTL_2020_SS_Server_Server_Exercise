@@ -29,7 +29,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // server configuration
-const PORT = 1337;
+const PORT = process.env.PORT || 1337;
 
 // create a route for the app
 app.get('/', (req, res) => {

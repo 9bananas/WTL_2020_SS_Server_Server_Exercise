@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/6930a325-b0fb-4199-b653-139d91300805/resourceGroups/WTL1_sup/providers/Microsoft.Web/sites/wtl-suppan-scharl-schweighofer",
+    "appService.deploySubpath": "."
+}
