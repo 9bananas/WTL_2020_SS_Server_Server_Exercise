@@ -13,7 +13,7 @@ module.exports = {
                 fs.writeFile(path, '', function (err) {
                     if (err) throw err;
                     var today = new Date();
-                    fs.writeFileSync('names.json', '[{ "datum" : "0000-00-00T00:00:00.000Z","id": 0, "name": "Gast" }]');
+                    fs.writeFileSync('names.json', '[{ "datum" : "' + new Date().toLocaleString() + '","id": 0, "name": "initial" }]');
                     console.log('generated ' + list + '!');
                 });
             }

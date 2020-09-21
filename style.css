@@ -11,46 +11,44 @@ html {
     background: linear-gradient(0deg, #FFFFFF, #0462F0);
 }
 
-.picture {
-    height: 380px;
-    background-image: url("Land1.jpg");
-    background-position: top;
-    background-size: cover;
-    opacity: 1;
-    border: 3px solid lightblue;
-    border-radius: 10px;
+#header {
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+    color: #000000;
 }
+
 
 body {
     margin: 25px;
 }
 
 #input_table {
-    background: #FFFFFF;
+    background: #80808088;
     height: 120px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
-    width: 370px;
+    width: 400px;
     padding: 10px;
-    opacity: 0.9;
     border-radius: 10px;
     border: 3px solid lightblue;
     border-radius: 10px;
+    color: #000000;
 }
 
 #names_list {
-    background: #FFFFFF;
+    background: #80808088;
     height: auto;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
-    width: 350px;
+    width: 380px;
     padding: 10px;
-    opacity: 0.9;
     border-radius: 10px;
     border: 3px solid lightblue;
     border-radius: 10px;
+    color: #000000;
 }
 
 table td.date {
@@ -58,26 +56,27 @@ table td.date {
 }
 
 table {
-    width: 350px;
+    width:350px;
 }
 
 #creators {
-    background: #FFFFFF;
+    background: #80808088;
     height: 120px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
-    width: 370px;
+    width: 400px;
     padding: 10px;
-    opacity: 0.8;
     border-radius: 10px;
     text-align: center;
     border: 3px solid lightblue;
     border-radius: 10px;
+    color: #000000;
 }
 
 button {
-    width: 370px;
+    width: 400px;
+    height: 25px;
     background: #0622F6;
     margin: auto;
     margin-top: 10px;
@@ -86,6 +85,7 @@ button {
     margin-right: auto;
     border-radius: 10px;
     color: #FFFFFF;
+    opacity: 0.7;
 }
 
 #checkin_data {
